@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fases de la Luna | Moon Knight</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/moon-icon.png" type="image/png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    
+    <div preload="metadata" class="loader">
+        <div class="lds-ring" bis_skin_checked="1"><div bis_skin_checked="1"></div><div bis_skin_checked="1"></div><div bis_skin_checked="1"></div><div bis_skin_checked="1"></div></div>
+    </div>
+
+    <main>
+        <header>
+            <h3 id="datetime-h3"></h3>
+            <button id="myBtn" class="hidden">
+                <img src="assets/moon-icon.png" alt="La Luna" title="La Luna" style="filter: drop-shadow(2px 2px 4px white); width: 40px;">
+            </button>
+        </header>
+
+        <!-- ABOUT DIV  -->
+
+        <div class="about-div">
+             <a href="index.html" title="Pagina principal">
+                <i class='bx bx-moon' style='color:#ffffff; font-size: 36px;'  ></i>
+             </a>
+        </div>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>La Luna</h2>
+                </div>
+                <div class="modal-body">
+                    <p>La Luna es el único satélite natural de la Tierra, un cuerpo que refleja la luz solar y es crucial para fenómenos como las mareas y la estabilidad climática terrestre. <br>Asociada con los ciclos de vida, se cree que controla muchos aspectos de la vida terrestre, asi como sus fases influyen en las personas.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container hidden" id="main-container">
+            <h1>Sobre este proyecto</h1>
+            <p>Este proyecto muestra las fases de la luna del dia actual con una tematica de Moon Knight y Konshu, mostrando informacion de la fase actual.</p>
+            <div class="mg-40">
+                <p>Para mejor experiencia, visualizar en una equipo de escritorio.</p>
+                <p class="txt-center">Autor: ElyazRDC</p>
+            </div>
+        </div>
+
+        <div class="moon-display-div" id="moon-display-div">
+            <img src="assets/moon-icons/luna-creciente.png" alt="">
+            <img src="assets/moon-icons/cuarto-creciente.png" alt="">
+            <img src="assets/moon-icons/luna-gibosa-creciente.png" alt="">
+            <img src="assets/moon-icons/luna-llena.png" alt="">
+            <img src="assets/moon-icons/luna-gibosa-menguante.png" alt="">
+            <img src="assets/moon-icons/cuarto-menguante.png" alt="">
+            <img src="assets/moon-icons/luna-menguante.png" alt="">
+            <img src="assets/moon-icons/luna-nueva.png" alt="">
+        </div>
+    </main>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Mohave:ital,wght@0,300..700;1,300..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mohave:ital,wght@0,300..700;1,300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@100..900&display=swap');
+
+:root {
+  --moon-white: #D3D3E5;
+  --white: #FFFFFF;
+  --moon-purple: #4D4A8C;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "Noto Sans Devanagari", "Mohave", "Noto Serif", sans-serif;
+    background-image: url("assets/MoonKnight_Scene.png");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-weight: 500;
+    text-shadow: 2px 2px 0px black;
+    overflow: hidden;
+}
+
+main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+    align-items: center;
+}
+
+header {
+  width: 100%;
+  /* height: 40px; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  /* background: red; */
+  border-bottom: 1px solid #D3D3E5;
+  box-shadow: 0px 0px 16px 0px #D3D3E5;
+  backdrop-filter: blur(24px);
+  position: absolute;
+  top: 0;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+a { 
+  text-decoration: none;
+  color: transparent;
+  cursor: pointer;
+}
+
+.loader {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('assets/night-sky.png');
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    transition: all 1.5s ease;
+}
+
+.loader2 {
+    opacity: 0;
+    /* display: none; */
+    /* transition: all 1s ease; */
+    /* display: none; */
+}
+
+.display-none {
+    display: none;
+}
+
+.mainVideo {
+  position: fixed !important;
+  /* top: 0;
+  left: 0; */
+  width: 110%;
+  height: 110%;
+  z-index: -1;
+  /* object-fit: cover; */
+}
+
+/* .container {
+  display: flex;
+    height: 100vh;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+} */
+
+.about-div {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 4px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: visibility 0s, opacity 0.5s linear;
+  opacity: 1;
+  width: 80%;
+}
+
+.container p {
+  font-size: 20px;
+  margin: 0px 40px;
+  text-align: left;
+}
+
+.mg-40 {
+  margin-top: 40px;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.moon-image-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.moon-image-div > i > p {
+  opacity: 0.8;
+  text-align: center !important;
+}
+
+.moon-image {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  animation: animate-moon 2s infinite alternate;
+  width: 86px;
+}
+
+.moon-display-div {
+  gap: 148px;
+  display: flex;
+  left: -140%;
+  top: 50%;
+  position: absolute;
+  transform: rotate(-8deg);
+  
+}
+
+.txt-center {
+  text-align: center !important;
+}
+
+.moon-display-div-animation {
+  animation: moon-display 6s forwards;
+}
+
+.lds-ring,
+.lds-ring div {
+  box-sizing: border-box;
+}
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid var(--white);
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: var(--white) transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-moon {
+  0% {
+    transform: scale(1.0);
+  }
+  100% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes moon-display {
+  0% {
+    left: -140%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    transform: rotate(8deg);
+    left: -140%;
+  }
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* ------------------- */
+/* Modal Content */
+/* ------------------- */
+
+.modal-content {
+  position: relative;
+  background-color: rgb(0, 0, 0, 0.9);
+  margin: auto;
+  padding: 0;
+  /* border: 1px solid #888; */
+  border-radius: 8px;
+  width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 8px 16px;
+  background-color: rgb(77, 74, 140, 0.3);
+  color: white;
+}
+
+.modal-body {
+  padding: 8px 16px;
+}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: var(--moon-purple);
+  color: white;
+}
+
+@media (min-width: 900px) {
+  .mainVideo {
+    width: 155%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  /* * {
+    overflow: hidden;
+  } */
+  body {
+    background-image: url(assets/MoonKnight_Scene_Vertical.jpg);
+  }
+  .mainVideo {
+    width: 200%;
+    aspect-ratio: 9 / 16;
+  }
+  .container {
+    margin: 16px;
+  }
+  .modal {
+    overflow: hidden;
+  }
+  .modal-content {
+    top: 160px;
+    width: 98%;
+    overflow: hidden;
+  }
+  .modal {
+    background-color: rgb(0,0,0, 0.7);
+  }
+  .modal-header h2 {
+    font-size: 28px;
+  }
+  .modal-body p{
+    font-size: 20px;
+  }
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:160px; opacity:1}
+  }
+  .about-div {
+    top: 80px;
+    font-size: 40px;
+  }
+  .about-div i {
+    font-size: 40px !important;
+  }
+}
