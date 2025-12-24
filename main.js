@@ -72,8 +72,8 @@ function checkMoonPhase(phase) {
             return "Luna Nueva"
         case (phase > 0 && phase < 0.25):
             //Luna Creciente
-            moonDisplayDiv.innerHTML = `
-            <img src="assets/moon-icons/creciente-concava.png" class="moon-image" alt=""></img>
+            moonImageDiv.innerHTML = `
+            <img src="assets/moon-icons/luna-creciente.png" class="moon-image" alt=""></img>
             <i><p>Vemos una delgada franja iluminada a la derecha (en el hemisferio norte), que va aumentando.</p></i>`;
             return "Luna Creciente"
         case (phase == 0.25):
@@ -90,7 +90,7 @@ function checkMoonPhase(phase) {
             return "Luna Gibosa Creciente";
         case (phase == 0.5):
             // Luna LLena
-            moonDisplayDiv.innerHTML = `
+            moonImageDiv.innerHTML = `
             <img src="assets/moon-icons/luna-llena.png" class="moon-image" alt=""></img>
             <i><p>La cara iluminada de la Luna mira hacia la Tierra. Se ve completamente redonda y brillante.</p></i>`;
             return "Luna Llena";

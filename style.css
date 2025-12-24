@@ -172,9 +172,9 @@ a {
   text-align: center !important;
 }
 
-.moon-display-div-animation {
+/* .moon-display-div-animation {
   animation: moon-display 6s forwards;
-}
+} */
 
 .lds-ring,
 .lds-ring div {
