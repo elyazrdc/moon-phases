@@ -50,9 +50,9 @@ function getWeatherData(data) {
     let date1 = document.getElementById("date1");
     let p = document.createElement("h2");
     p.innerHTML = `
-        Estamos en: ${checkMoonPhase(data['days'][0]['moonphase'])}<br>
-        Salida de la Luna: ${data['days'][0]['moonrise']}<br>
-        Puesta de la Luna: ${data['days'][0]['moonset']}<br>
+        Estamos en: <b>${checkMoonPhase(data['days'][0]['moonphase'])}</b><br>
+        <span style="opacity: 0.8;">Salida de la Luna: ${data['days'][0]['moonrise']}<br>
+        Puesta de la Luna: ${data['days'][0]['moonset']}<br></span>
         `;
     date1.append(p)
     console.log(typeof(data['days'][0]['moonrise']));

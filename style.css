@@ -127,7 +127,7 @@ a {
 
 .container p {
   font-size: 20px;
-  margin: 0px 40px;
+  margin: 0px 100px;
   text-align: left;
 }
 
@@ -148,7 +148,7 @@ a {
 
 .moon-image-div > i > p {
   opacity: 0.8;
-  text-align: center !important;
+  text-align: left !important;
 }
 
 .moon-image {
@@ -168,8 +168,9 @@ a {
   
 }
 
-.txt-center {
+.author {
   text-align: center !important;
+  margin-top: 8px !important;
 }
 
 /* .moon-display-div-animation {
@@ -315,9 +316,12 @@ a {
   color: white;
 }
 
-@media (min-width: 900px) {
+@media (max-width: 900px) {
   .mainVideo {
     width: 155%;
+  }
+  .container p {
+    margin: 0px 10px;
   }
 }
 
@@ -334,6 +338,8 @@ a {
   }
   .container {
     margin: 16px;
+    gap: 4px;
+    width: 90%;
   }
   .modal {
     overflow: hidden;
@@ -351,6 +357,9 @@ a {
   }
   .modal-body p{
     font-size: 20px;
+  }
+  .container p {
+    margin: 0;
   }
   @keyframes animatetop {
     from {top:-300px; opacity:0}
