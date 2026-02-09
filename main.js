@@ -1,6 +1,6 @@
 let loader = document.querySelector(".loader");
 
-let URL = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Herndon,VA?unitGroup=us&key=QTZNK5TFEJ9BWVSKRSY3U5KAL&include=days&elements=datetime,moonphase,,moonrise,moonset'
+let URL = 'https://moon-phases-backend.onrender.com'
 
 let datetimeh3 = document.getElementById("datetime-h3");
 let moonImageDiv = document.getElementById("moon-image-div");
