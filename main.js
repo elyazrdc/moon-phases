@@ -35,28 +35,29 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 fetch(URL)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data['days']);
-            getWeatherData(data);
+        .then(res => res.json())
+        .then(value => {
+            console.log("Fecthing data...")
+
+            getWeatherData(value);
         })
         .catch(error => {
             console.error('Error fetching weather data:', error);
         });
     
 
-function getWeatherData(data) {
+function getWeatherData(value) {
     datetimeh3.innerText = `Fecha de hoy: ${formattedDate}`;
     let date1 = document.getElementById("date1");
     let p = document.createElement("h2");
     p.innerHTML = `
-        Estamos en: <b>${checkMoonPhase(data['days'][0]['moonphase'])}</b><br>
-        <span style="opacity: 0.8;">Salida de la Luna: ${data['days'][0]['moonrise']}<br>
-        Puesta de la Luna: ${data['days'][0]['moonset']}<br></span>
+        Estamos en: <b>${checkMoonPhase(value['data']['days'][0]['moonphase'])}</b><br>
+        <span style="opacity: 0.8;">Salida de la Luna: ${value['data']['days'][0]['moonrise']}<br>
+        Puesta de la Luna: ${value['data']['days'][0]['moonset']}<br></span>
         `;
     date1.append(p)
-    console.log(typeof(data['days'][0]['moonrise']));
-    checkMoonPhase(data['days'][0]['moonphase']);
+
+    checkMoonPhase(value['data']['days'][0]['moonphase']);
 
     
 }
