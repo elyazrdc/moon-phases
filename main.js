@@ -1,3 +1,4 @@
+// VARIABLES
 let loader = document.querySelector(".loader");
 
 let URL = 'https://moon-phases-backend.onrender.com'
@@ -6,19 +7,33 @@ let datetimeh3 = document.getElementById("datetime-h3");
 let moonImageDiv = document.getElementById("moon-image-div");
 let mainContainer = document.getElementById("main-container");
 let moonDisplayDiv = document.getElementById("moon-display-div");
-
+let date1 = document.getElementById("date1");
 var btn = document.getElementById("myBtn");
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
 
+// FECHA ACTUAL
 const today = new Date();
-const formattedDate = today.toLocaleDateString('es-ES'); // Formato español
+const formattedDate = today.toLocaleDateString('es-ES', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+}); // Formato español
+
 console.log(formattedDate);
 
-window.addEventListener("DOMContentLoaded", () => {
+datetimeh3.innerText = `📅 ${formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)}`;
+//`Fecha de hoy: ${formattedDate}`;
+let data_Ready = false
+
+// ANIMACIONES DE CARGA
+window.addEventListener("load", () => {
     console.log("Page loaded");
     setTimeout(() => {
         loader.classList.toggle("loader2")
         
-        //loader.classList.add("display-none")
+        loader.classList.add("display-none")
     }, 1500);
     setTimeout(() => {
         loader.remove();
@@ -34,21 +49,44 @@ window.addEventListener("DOMContentLoaded", () => {
     }, 5000);
 });
 
-fetch(URL)
-        .then(res => res.json())
-        .then(value => {
-            console.log("Fecthing data...")
-
-            getWeatherData(value);
-        })
-        .catch(error => {
-            console.error('Error fetching weather data:', error);
-        });
+// CARGA DE DATOS
+async function loadMoonData() {
+    // Mostrar cargando
+    date1.innerHTML = `
+    <div class="loading-api">
+        <div class="spinner"></div>
+        Cargando fase lunar
+        <span class="dot">.</span>
+        <span class="dot">.</span>
+        <span class="dot">.</span>
+    </div>
+    `;
     
+    try {
+        const response = await fetch(URL);
+        const data = await response.json();
+        
+        // Limpiar cargando y mostrar datos
+        date1.innerHTML = '';
+        getWeatherData(data);
+        
+    } catch (error) {
+        console.error('Error:', error);
+        date1.innerHTML = `
+        <div class="error-api">
+            No se pudieron cargar los datos
+            <button onclick="loadMoonData()">Reintentar</button>
+        </div>
+        `;
+    }
+}
+
+
+loadMoonData();
 
 function getWeatherData(value) {
-    datetimeh3.innerText = `Fecha de hoy: ${formattedDate}`;
-    let date1 = document.getElementById("date1");
+    data_Ready = true
+   
     let p = document.createElement("h2");
     p.innerHTML = `
         Estamos en: <b>${checkMoonPhase(value['data']['days'][0]['moonphase'])}</b><br>
@@ -119,25 +157,14 @@ function checkMoonPhase(phase) {
     }
 }
 
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
+// MODAL
 btn.onclick = function() {
   modal.style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
 }
-
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {

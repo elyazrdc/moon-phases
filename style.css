@@ -65,6 +65,35 @@ a {
   cursor: pointer;
 }
 
+.loading-api {
+  opacity: 0.8;
+  font-size: 28px;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+/* Estilo para cada punto */
+.dot {
+  animation: jump 1.4s infinite ease-in-out;
+}
+
+/* Retraso para que salten uno tras otro */
+.dot:nth-child(1) { animation-delay: 0s; }
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+/* La magia del salto */
+@keyframes jump {
+    0%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px); /* Altura del salto */
+    }
+}
+
+
 .loader {
     width: 100vw;
     height: 100vh;
@@ -98,6 +127,8 @@ a {
   width: 110%;
   height: 110%;
   z-index: -1;
+  transform: translateZ(0);
+  will-change: transform;
   /* object-fit: cover; */
 }
 
@@ -325,7 +356,7 @@ a {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (orientation: portrait) {
   /* * {
     overflow: hidden;
   } */
@@ -333,8 +364,16 @@ a {
     background-image: url(assets/MoonKnight_Scene_Vertical.jpg);
   }
   .mainVideo {
-    width: 200%;
-    aspect-ratio: 9 / 16;
+    width: 130vw;
+    /* height: 100vh; */
+    /*aspect-ratio: 9 / 16;*/
+    object-fit: contain;
+    position: fixed;
+    /* top: 0;
+    left: 0; */
+    object-position: center;
+    transform: scale(1);
+    z-index: -1;
   }
   .container {
     margin: 16px;
@@ -360,6 +399,9 @@ a {
   }
   .container p {
     margin: 0;
+  }
+  .moon-image {
+    width: 100px;
   }
   @keyframes animatetop {
     from {top:-300px; opacity:0}
